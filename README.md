@@ -1,6 +1,10 @@
 # Colette
 #### Description: Colette is a web application developed with Flask that allows programmers, UI artists, and more to quickly come up with color palettes for their software programs.
 
+## Current Website:
+http://cachandlerdev.pythonanywhere.com/
+
+## Documentation
 For my submission to CS50x, I wanted to create some kind of application that would have real world value beyond merely serving as a box to check in this course, and that I would be able to use for future projects.
 Initially, I considered creating a website for OSSU, which is a free and open source computer science curriculum that compiles various MOOC courses, but after completing the Week 8 Homepage assignment and seeing the relative ease with which I could create a frontend only page (I had created a website for CS50), I was uncertain that a project of that nature would be complex enough to provide a suitable challenge.
 After a while, I thought about the process I usually go through when creating software mockups in Figma, and realized that one of the issues I have always had with most popular "color palette" websites is that they typically only allow the user to select (or randomly generate) 5 main colors, which is unfortunate because real software applications are not typically created that way.
