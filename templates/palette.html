@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Palette - Success
+{% endblock %}
+
+{% block body %}
+    <div class="center">
+        <h1 id="title">Success!</h1>
+        <h4 id="question">Your color palette has been generated.</h4>
+        <div class="palette-background">
+            <h2 class="palette-type">Basic</h2>
+            {% for color in colors %}
+                <div class="palette-midground">
+                    <h3 class="shades-title">{{ color }}</h3>
+                    <div class="palette-grid">
+                        {% for option in palette[color] %}
+                            <div class="palette-item">
+                                <div class="palette-color" name="{{ color }}-{{ option }}" style="background-color: {{ option }}"></div>
+                                <p class="palette-hex">{{ option }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <form action="/preview">
+            <input class="filled-button" type="submit" value="See UI Preview">
+        </form>
+        <form action="/">
+            <input class="outline-button" type="submit" value="Home">
+        </form>
+    </div>
+    <footer>Colette</footer>
+{% endblock %}

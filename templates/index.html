@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Palette
+{% endblock %}
+
+{% block body %}
+    <div class="center">
+        <h1 id="title">Colette</h1>
+        <img id="main-menu-logo" src="/static/res/logo.svg" alt="Colette Logo">
+        <h2 id="slogan">Find your next color palette!</h2>
+        <form action="/get_started">
+            <input class="filled-button" id="get-started-button" type="submit" name="get-started" value="Get Started">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Palette - Confirm
+{% endblock %}
+
+{% block body %}
+    <div class="center">
+        <h1 id="title">Confirm</h1>
+        <h4 id="question">Are you satisfied with your choices?</h4>
+        <form id="change-form" action="/confirm" method="post">
+            {% for color in colors %}
+                <a onclick="post({to_update: '{{ color }}'});">
+                    <div class="change-button">
+                        <div class="color" style="background-color: {{ user_choices[color] }}"></div>
+                        <p class="no-select">Change {{ color }}</p>
+                    </div>
+                </a>
+                    
+            {% endfor %}
+        </form>
+        <script>
+            /**
+            * Sends a request to the specified url from a form.
+            * @param {object} params the parameters to add to the url
+            */
+            function post(params) {
+                const form = document.getElementById('change-form');
+
+                for (const key in params) {
+                    if (params.hasOwnProperty(key)) {
+                        const hiddenField = document.createElement('input');
+                        hiddenField.type = 'hidden';
+                        hiddenField.name = key;
+                        hiddenField.value = params[key];
+
+                        form.appendChild(hiddenField);
+                    }
+                }
+                form.submit();
+            }
+        </script>
+
+        <form action="/confirm" method="post">
+            <input class="filled-button" type="submit" value="Generate">
+        </form>
+    </div>
+    <footer>Colette</footer>
+{% endblock %}

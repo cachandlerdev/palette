@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Palette - Colors
+{% endblock %}
+
+{% block body %}
+    <div class="center">
+        <h1 id="title">{{ title }}</h1>
+        <h4 id="question">What do you want the {{ title }} {{ type }} to be?</h4>
+        {% if title != colors[0] %}
+        <div class="color-preview">
+            {% for key, value in user_choices.items() %}
+                <div class="small-color" style="background-color: {{value}}"></div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form action="/colors" method="post">
+            <div class="color-grid">
+                {% for option in color_options %}
+                    <input class="color" name="{{ title }}-{{ type }}" type="submit" style="background-color: {{ option }}" value="{{ option }}">
+                {% endfor %}
+            </div>
+            
+        </form>
+    </div>
+    <footer>Colette</footer>
+{% endblock %}

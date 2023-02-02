@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Palette
+{% endblock %}
+
+{% block body %}
+    <div class="center">
+        <h1 id="title">Settings</h1>
+        {% if message != "" %}
+            <h4 id="question">{{ message }}</h4>
+        {% endif %}
+        <form id="settings-form" action="/settings" method="post">
+            <div id="settings-container">
+                <h3>Number of colors to show:</h3>
+                <input name="num_of_colors_to_show" type="number" value="{{ num_to_show }}">
+                <h3>Number of colors to generate:</h3>
+                <input name="num_of_colors_to_generate" type="number" value="{{ num_to_gen }}" >
+            </div>
+            <input class="filled-button" type="submit" name="save" value="Save">
+        </form>
+        <form action="/">
+            <input class="outline-button" type="submit" value="Home">
+        </form>
+    </div>
+{% endblock %}

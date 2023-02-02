@@ -1,0 +1,2 @@
+You have to run flask in debug mode for the template html code to update.
+Use: FLASK_DEBUG=1 flask run

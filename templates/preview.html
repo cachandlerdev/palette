@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Palette - Preview
+{% endblock %}
+
+{% block body %}
+    <div class="center">
+        <h1 id="title">Chat App</h1>
+        <h4 id="question">This is how a chat app would look with the colors you chose.</h4>
+        <iframe id="chat-app" src="/show-chat-app" frameBorder="0" width="360" height="785"></iframe>
+        <form action="/generate">
+            <input class="filled-button" type="submit" value="Back to Palette">
+        </form>
+        <form action="/">
+            <input class="outline-button" type="submit" value="Home">
+        </form>
+    </div>
+    <footer>Colette</footer>
+{% endblock %}

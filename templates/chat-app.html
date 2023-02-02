@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="/static/chat.css">
+        <title>
+            Chat App
+        </title>
+    </head>
+    <style>
+        :root {
+            --highlight-text-color: {{ palette["accent"] }};
+        }
+    </style>
+    <body>
+        <header style="--header-divider: {{ palette["lightest_main"] }}">
+            <ul class="menu">
+                <li class="toggle" onclick="openSidePanel()" style="color: {{ palette["lighter_main"] }}">&#9776;</li>
+                <li id="channel-name" style="color: {{ palette["darker_main"] }}">General</li>
+                <li id="search">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22.8702 20.1258H21.4248L20.9125 19.6318C22.7055 17.546 23.785 14.8382 23.785 11.8925C23.785 5.32419 18.4608 0 11.8925 0C5.32419 0 0 5.32419 0 11.8925C0 18.4608 5.32419 23.785 11.8925 23.785C14.8382 23.785 17.546 22.7055 19.6318 20.9125L20.1258 21.4248V22.8702L29.2739 32L32 29.2739L22.8702 20.1258ZM11.8925 20.1258C7.33676 20.1258 3.65923 16.4483 3.65923 11.8925C3.65923 7.33676 7.33676 3.65923 11.8925 3.65923C16.4483 3.65923 20.1258 7.33676 20.1258 11.8925C20.1258 16.4483 16.4483 20.1258 11.8925 20.1258Z" fill="{{ palette["lighter_main"] }}"/>
+                    </svg>                        
+                </li>
+            </ul>
+        </header>
+        <div id="panel-and-body">
+            <div id="side-panel" style="background-color: {{ palette["even_darker_main"] }}">
+                <div id="top-box">
+                    <div id="profile-box">
+                        <img id="profile-icon" src="/static/res/avatar1.png">
+                        <div>
+                            <h4 id="profile-name">Jones Smith</h4>
+                            <div id="status-indicator">
+                                <div id="green-circle" style="background-color: {{ palette["lighter_positive"] }}"></div>
+                                Online
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spacer"></div>
+                    <div id="notification">
+                        <svg width="27" height="33" viewBox="0 0 27 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.1282 32.4531C14.9333 32.4531 16.4103 30.9762 16.4103 29.1711H9.84615C9.84615 30.9762 11.3231 32.4531 13.1282 32.4531ZM22.9744 22.607V14.4018C22.9744 9.36389 20.2995 5.14646 15.5897 4.03056V2.91466C15.5897 1.55261 14.4903 0.453125 13.1282 0.453125C11.7662 0.453125 10.6667 1.55261 10.6667 2.91466V4.03056C5.97333 5.14646 3.28205 9.34748 3.28205 14.4018V22.607L0 25.889V27.53H26.2564V25.889L22.9744 22.607ZM19.6923 24.248H6.5641V14.4018C6.5641 10.3321 9.04205 7.01723 13.1282 7.01723C17.2144 7.01723 19.6923 10.3321 19.6923 14.4018V24.248Z" fill="{{ palette["lighter_main"] }}"/>
+                            <circle cx="20" cy="6" r="5" fill="{{ palette["accent"] }}" stroke="white" stroke-width="2"/>
+                        </svg>                        
+                    </div>
+                </div>
+                <div id="big-links-box">
+                    <div class="big-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.3333 0H2.65333C1.17333 0 0.0133333 1.18667 0.0133333 2.66667L0 21.3333C0 22.8 1.17333 24 2.65333 24H21.3333C22.8 24 24 22.8 24 21.3333V2.66667C24 1.18667 22.8 0 21.3333 0ZM21.3333 16H16C16 18.2133 14.2 20 12 20C9.8 20 8 18.2133 8 16H2.65333V2.66667H21.3333V16Z" fill="{{ palette["lighter_main"] }}"/>
+                        </svg>
+                        Inbox
+                    </div>
+                    <div class="big-link">
+                        <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 8.688L15.372 7.944L12 0L8.628 7.956L0 8.688L6.552 14.364L4.584 22.8L12 18.324L19.416 22.8L17.46 14.364L24 8.688ZM12 16.08L7.488 18.804L8.688 13.668L4.704 10.212L9.96 9.756L12 4.92L14.052 9.768L19.308 10.224L15.324 13.68L16.524 18.816L12 16.08Z" fill="{{ palette["lighter_main"] }}"/>
+                        </svg>
+                        Starred
+                    </div>
+                    <div id="channels">
+                        <h6 id="channels-title" style="color: {{ palette["lighter_main"] }}">Channels</h6>
+                        <div class="active-channel-box" style="background-color: {{ palette["darkest_main"] }}">
+                            <div class="channel">
+                                Design
+                            </div>
+                        </div>
+                        <div class="channel unread">
+                            Engineering
+                            <div class="spacer"></div>
+                            <div id="unread-pill" style="background-color: {{ palette["accent"] }}; color: {{ palette["darkest_accent"] }}">4</div>
+                        </div>
+                        <div class="channel">
+                            Marketing
+                        </div>
+                    <div class="channel">
+                        Support
+                    </div>
+                    <div class="channel">
+                        Sales
+                    </div>
+                </div>
+                <div class="big-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 13.7143H13.7143V24H10.2857V13.7143H0V10.2857H10.2857V0H13.7143V10.2857H24V13.7143Z" fill="white"/>
+                    </svg>
+                    New Channel
+                </div>
+                <div class="big-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.3867 2.97333L21.5333 0.733333C21.1733 0.28 20.6267 0 20 0H4C3.37333 0 2.82667 0.28 2.45333 0.733333L0.613333 2.97333C0.226667 3.42667 0 4.02667 0 4.66667V21.3333C0 22.8 1.2 24 2.66667 24H21.3333C22.8 24 24 22.8 24 21.3333V4.66667C24 4.02667 23.7733 3.42667 23.3867 2.97333ZM12 19.3333L4.66667 12H9.33333V9.33333H14.6667V12H19.3333L12 19.3333ZM2.82667 2.66667L3.90667 1.33333H19.9067L21.16 2.66667H2.82667Z" fill="{{ palette["lighter_main"] }}"/>
+                    </svg>
+                    Archived
+                </div>
+            </div>
+            <img id="collapse-side-panel" src="/static/res/submit.svg" onclick="closeSidePanel()">
+        </div>
+        <div class="content">
+            <div class="warning-container" style="--warning-divider: {{ palette["warning"] }}; background-color: {{ palette["lightest_warning"] }}">
+                <div id="warning-icon">
+                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="19" cy="19" r="19" fill="{{ palette["warning"] }}"/>
+                        <circle cx="19" cy="19" r="12.5" fill="white" stroke="{{ palette["darker_warning"] }}"/>
+                        <path d="M18.0874 21.984L17.1514 10.08H20.8474L19.9114 21.984H18.0874ZM17.3194 27V23.664H20.6794V27H17.3194Z" fill="{{ palette["darkest_gray"] }}"/>
+                    </svg>
+                </div>
+                <div id="warning-text-container">
+                    <h5 id="warning-title" style="color: {{ palette["darkest_warning"] }}">Not Connected</h5>
+                    <p id="warning-text" style="color: {{ palette["darker_warning"] }}">Sorry, we are having trouble getting the latest messages right now.</p>
+                </div>
+            </div>
+            <div class="chat-log">
+                <div class="chat-message">
+                    <img class="avatar" src="/static/res/avatar1.png">
+                    <div class="message-container">
+                        <div class="name-and-time-container">
+                            <h4 class="avatar-name" style="color: {{ palette["lighter_main"] }}">Jones Smith</h4>
+                            <p class="timestamp" style="color: {{ palette["darker_gray"] }}">12:44 PM</p>
+                        </div>
+                        <p class="message-text">Hi guys, I’m trying to come up with some dummy text for a UI mockup. Do you have any ideas?</p>
+                    </div>
+                </div>
+                <div class="chat-message">
+                    <img class="avatar" src="/static/res/avatar2.png">
+                    <div class="message-container">
+                        <div class="name-and-time-container">
+                            <h4 class="avatar-name" style="color: {{ palette["darker_secondary"] }}">George Brown</h4>
+                            <p class="timestamp" style="color: {{ palette["darker_gray"] }}">12:48 PM</p>
+                        </div>
+                        <p class="message-text">Why not just use lorem ipsum?</p>
+                    </div>
+                </div>
+                <div class="chat-message">
+                    <img class="avatar" src="/static/res/avatar1.png">
+                    <div class="message-container">
+                        <div class="name-and-time-container">
+                            <h4 class="avatar-name" style="color: {{ palette["lighter_main"] }}">Jones Smith</h4>
+                            <p class="timestamp" style="color: {{ palette["darker_gray"] }}">12:50 PM</p>
+                        </div>
+                        <p class="message-text">I’ve been copy pasting lorem ipsum all day. “Lorem ipsum” on this widget, “dolor sit” on that one, on and on ... I was kind of hoping that someone would have another idea.</p>
+                    </div>
+                </div>
+                <div class="chat-message">
+                    <img class="avatar" src="/static/res/avatar3.png">
+                    <div class="message-container">
+                        <div class="name-and-time-container">
+                            <h4 class="avatar-name" style="color: {{ palette["darker_secondary"] }}">Bob Porter</h4>
+                            <p class="timestamp" style="color: {{ palette["darker_gray"] }}">12:53 PM</p>
+                        </div>
+                        <p class="message-text">I suppose you could throw a couple pangrams in. You know, sentences like, “The quick brown fox jumps over the lazy dog.” There’s a couple others on Wikipedia if you’re interested.</p>
+                    </div>
+                </div>
+                <div class="chat-message">
+                    <img class="avatar" src="/static/res/avatar1.png">
+                    <div class="message-container">
+                        <div class="name-and-time-container">
+                            <h4 class="avatar-name" style="color: {{ palette["lighter_main"] }}">Jones Smith</h4>
+                            <p class="timestamp" style="color: {{ palette["darker_gray"] }}">12:59 PM</p>
+                        </div>
+                        <p class="message-text"><a class="at-link" href="#" style="color: {{ palette["darker_accent"] }};">@Bob Porter</a> Alright, I guess I’ll start pasting “How quickly daft jumping zebras vex!” for a bit instead. Thanks!</p>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <input id="attach-file" type="button" style="background-color: {{ palette["main_gray"] }}">
+                    <input id="text-input" placeholder="Type your message..." readonly type="text" style="background-color: {{ palette["main_gray"] }}; --text-outline-color: {{ palette["darker_main"] }};">
+                    <input id="submit" type="button" style="background-color: {{ palette["main"] }}">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            /* Show the panel */
+            function openSidePanel() {
+                document.getElementById("side-panel").style.width = "310px";
+            }
+
+            /* Hide the panel */
+            function closeSidePanel() {
+                document.getElementById("side-panel").style.width = "0";
+            }
+        </script>
+    </body>
+</html>
