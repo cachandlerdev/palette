@@ -7,8 +7,8 @@ http://cachandlerdev.pythonanywhere.com/
 ## Screenshot:
 ![image](https://github.com/BagelSeasoning234/palette/assets/70250943/421b22b4-4551-48f1-9ef4-3e5a193644d8)
 
-## Documentation
-For my submission to CS50x, I wanted to create some kind of application that would have real world value beyond merely serving as a box to check in this course, and that I would be able to use for future projects.
+## Explanation
+For my first big web project, I wanted to create some kind of application that would have real world value beyond merely serving as a box to check in this course, and that I would be able to use for future projects.
 Initially, I considered creating a website for OSSU, which is a free and open source computer science curriculum that compiles various MOOC courses, but after completing the Week 8 Homepage assignment and seeing the relative ease with which I could create a frontend only page (I had created a website for CS50), I was uncertain that a project of that nature would be complex enough to provide a suitable challenge.
 After a while, I thought about the process I usually go through when creating software mockups in Figma, and realized that one of the issues I have always had with most popular "color palette" websites is that they typically only allow the user to select (or randomly generate) 5 main colors, which is unfortunate because real software applications are not typically created that way.
 As an analysis of programs like VSCode or Github would reveal, most actual tools do not bombard the senses with five randomly selected splotches of orange, green, and blue, and instead carefully choose one or two colors and apply them sparingly in several different shades so as to create a coherent and visually interesting yet not overwhelming interface.
