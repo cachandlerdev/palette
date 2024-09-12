@@ -35,5 +35,3 @@ This proved fairly difficult, so for the sake of time I unfortunately had to cut
 Finally, the css was fairly tedious, so I will not spend long on this section, but it was comprised of `light.css`, which made up the visual language of Colette itself, and `chat.css`, which defined the layout of the mockup.
 As the name "light" implies, I was initially hoping to create a dark mode version as well, but I eventually cut that feature along with several others after this project began taking significantly longer to complete than expected, mainly because of the css styling.
 (For a time, I was even considering allowing the user to choose whether he wanted more than just three color types---e.g. yellow warnings, red error messages, etc.---but while significant portions of the code are still setup to handle this, I eventually decided that I had spent enough time working on Colette and should really move on to learning something else.
-
-All in all, I am glad I went through the course, and I would like to say thank you to everyone involved in its production or who helped out in the Discord server when I was struggling.
